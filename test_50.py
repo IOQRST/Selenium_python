@@ -21,5 +21,4 @@ with webdriver.Chrome() as browser:
     for i in list_of_all_numbers:
         total += int(i.text)
 
-
     print(total)
