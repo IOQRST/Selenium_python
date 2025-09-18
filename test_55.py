@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 
 url = "https://parsinger.ru/selenium/7/7.5/index.html"
 
-with webdriver.Chrome() as browser:
+with webdriver.Firefox() as browser:
     browser.get(url)
     action = ActionChains(browser)
     cards = []

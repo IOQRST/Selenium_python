@@ -3,12 +3,12 @@ from traceback import print_tb
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-with webdriver.Chrome() as driver:
-    driver.get('http://parsinger.ru/selenium/7/7.html')
-    driver.maximize_window()
-    quotes = driver.find_elements(By.TAG_NAME, 'option')
-    rs = driver.find_element(By.ID, 'input_result')
-    btn = driver.find_element(By.CLASS_NAME, 'btn')
+with webdriver.Firefox() as browser:
+    browser.get("http://parsinger.ru/selenium/7/7.html")
+    browser.maximize_window()
+    quotes = browser.find_elements(By.TAG_NAME, "option")
+    rs = browser.find_element(By.ID, "input_result")
+    btn = browser.find_element(By.CLASS_NAME, "btn")
 
     result = 0
 
@@ -17,4 +17,4 @@ with webdriver.Chrome() as driver:
 
     rs.send_keys(result)
     btn.click()
-    print(driver.find_element(By.ID, 'result').text)
+    print(browser.find_element(By.ID, "result").text)

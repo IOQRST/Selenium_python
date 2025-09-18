@@ -1,18 +1,18 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-opt = webdriver.ChromeOptions()
+opt = webdriver.FirefoxOptions()
 opt.add_argument("--headless")
 
 url = "https://parsinger.ru/methods/1/index.html"
 
-with webdriver.Chrome(options=opt) as driver:
-    driver.get(url)
+with webdriver.Firefox(options=opt) as browser:
+    browser.get(url)
 
-    target = driver.find_element(By.ID, "result")
+    target = browser.find_element(By.ID, "result")
 
     while not target.text.isdigit():
-        driver.refresh()
-        target = driver.find_element(By.ID, "result")
+        browser.refresh()
+        target = browser.find_element(By.ID, "result")
 
     print(target.text)

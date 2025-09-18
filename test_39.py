@@ -7,8 +7,8 @@ opt = webdriver.FirefoxOptions()
 
 url = "https://parsinger.ru/selenium/5.6/1/index.html"
 
-with webdriver.Firefox(options=opt) as driver:
-    driver.get(url)
+with webdriver.Firefox(options=opt) as browser:
+    browser.get(url)
 
     cookies = [
         {"name": "KXIYO4xMrWh", "value": "ibyAZPfXAsPqptPaNyL"},
@@ -203,10 +203,16 @@ with webdriver.Firefox(options=opt) as driver:
     list_of_all = []
 
     for i in cookies:
-        driver.add_cookie(i)
-        driver.refresh()
+        browser.add_cookie(i)
+        browser.refresh()
         time.sleep(0.5)
-        list_of_all.append({"value":i["value"], "age": int(driver.find_element(By.ID, "age").text.split(" ")[1]), "langs": len(driver.find_elements(By.TAG_NAME, "li"))})
-        driver.delete_cookie(i["name"])
- 
+        list_of_all.append(
+            {
+                "value": i["value"],
+                "age": int(browser.find_element(By.ID, "age").text.split(" ")[1]),
+                "langs": len(browser.find_elements(By.TAG_NAME, "li")),
+            }
+        )
+        browser.delete_cookie(i["name"])
+
     print(sorted(list_of_all, key=lambda x: x["age"])[0])

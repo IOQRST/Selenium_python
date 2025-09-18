@@ -1,10 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--headless')
+chrome_options = webdriver.FirefoxOptions()
+chrome_options.add_argument("--headless")
 
-with webdriver.Chrome(options=chrome_options) as driver:
-    driver.get('https://stepik.org/course/104774')
-    a = driver.find_element(By.TAG_NAME, 'a')
-    print(a.get_attribute('href'))
+with webdriver.Firefox(options=chrome_options) as browser:
+    browser.get("https://stepik.org/course/104774")
+    a = browser.find_element(By.TAG_NAME, "a")
+    print(a.get_attribute("href"))

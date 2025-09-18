@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 
 url = "https://parsinger.ru/selenium/5.7/5/index.html"
 
-with webdriver.Chrome() as browser:
+with webdriver.Firefox() as browser:
     browser.get(url)
     action = ActionChains(browser)
 

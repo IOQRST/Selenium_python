@@ -1,12 +1,14 @@
-from selenium import webdriver
 from pprint import pprint
+
+from selenium import webdriver
 
 url = "https://ya.ru/"
 
-opt = webdriver.ChromeOptions()
+opt = webdriver.FirefoxOptions()
 opt.add_argument("--headless")
 
-with webdriver.Chrome(options=opt) as driver:
-    driver.get(url)
-    cookies = driver.get_cookies()
+with webdriver.Firefox(options=opt) as browser:
+    browser.get(url)
+    cookies = browser.get_cookies()
+    pprint(cookies)
     pprint(cookies)

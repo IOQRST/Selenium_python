@@ -1,13 +1,13 @@
 from selenium import webdriver
 
-opt = webdriver.ChromeOptions()
+opt = webdriver.FirefoxOptions()
 opt.add_argument("--headless")
 
 url = "https://parsinger.ru/methods/3/index.html"
 
-with webdriver.Chrome(options=opt) as driver:
-    driver.get(url)
-    cookies = driver.get_cookies()
+with webdriver.Firefox(options=opt) as browser:
+    browser.get(url)
+    cookies = browser.get_cookies()
 
     cookies_list = []
 

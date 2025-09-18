@@ -3,15 +3,15 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-opt = webdriver.ChromeOptions()
+opt = webdriver.FirefoxOptions()
 
 url = "https://parsinger.ru/selenium/5.5/2/1.html"
 
-with webdriver.Chrome(options=opt) as driver:
-    driver.get(url)
+with webdriver.Firefox(options=opt) as browser:
+    browser.get(url)
 
-    field_list = driver.find_elements(By.CLASS_NAME, "text-field")
-    button = driver.find_element(By.ID, "checkButton")
+    field_list = browser.find_elements(By.CLASS_NAME, "text-field")
+    button = browser.find_element(By.ID, "checkButton")
 
     for i in field_list:
         if i.get_attribute("disabled"):
@@ -22,7 +22,7 @@ with webdriver.Chrome(options=opt) as driver:
 
     time.sleep(1)
 
-    alert = driver.switch_to.alert
+    alert = browser.switch_to.alert
 
     print(alert.text)
 

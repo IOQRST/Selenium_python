@@ -3,11 +3,11 @@ from selenium.webdriver.common.by import By
 
 url = "https://parsinger.ru/selenium/6/6.3.2/index.html"
 
-opt = webdriver.ChromeOptions()
+opt = webdriver.FirefoxOptions()
 opt.add_argument("--headless")
 
-with webdriver.Chrome(options=opt) as driver:
-    driver.get(url)
-    driver.delete_all_cookies()
-    driver.implicitly_wait(1)
-    print(driver.find_element(By.ID, "password").text)
+with webdriver.Firefox(options=opt) as browser:
+    browser.get(url)
+    browser.delete_all_cookies()
+    browser.implicitly_wait(1)
+    print(browser.find_element(By.ID, "password").text)
