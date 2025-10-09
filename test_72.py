@@ -5,9 +5,7 @@ URL = "https://parsinger.ru/selenium/5.8/5/index.html"
 
 
 def introduction_to_frames(url):
-    browser = webdriver.Firefox()
-
-    try:
+    with webdriver.Firefox() as browser:
         browser.get(url)
 
         all_frames = browser.find_elements(By.TAG_NAME, "iframe")
@@ -30,9 +28,6 @@ def introduction_to_frames(url):
                 return alert.text
             except:  # noqa: E722
                 print("Alert is not opened.")
-
-    finally:
-        browser.quit()
 
 
 print(introduction_to_frames(URL))

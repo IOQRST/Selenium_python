@@ -8,16 +8,12 @@ a_url = "https://parsinger.ru/selenium/9/9.4.3/final.html?key=secure"
 
 
 def accurate_url(url: str):
-    browser = webdriver.Firefox()
-
-    try:
+    with webdriver.Firefox() as browser:
         browser.get(url)
         buttons = browser.find_elements(By.CLASS_NAME, "btn")
         buttons[-1].click()
         WDW(driver=browser, timeout=20).until(EC.url_to_be(a_url))
         print(browser.find_element(By.ID, "password").text)
-    finally:
-        browser.quit()
 
 
 accurate_url(URL)

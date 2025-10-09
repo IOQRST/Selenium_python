@@ -7,17 +7,13 @@ URL = "https://parsinger.ru/selenium/9/9.1.1/index.html"
 
 
 def explicit_waits(url: str):
-    browser = webdriver.Firefox()
-
-    try:
+    with webdriver.Firefox() as browser:
         browser.get(url)
         buttons = browser.find_elements(By.TAG_NAME, "button")
         for button in buttons:
             WDW(browser, 12).until(EC.element_to_be_clickable((button))).click()
-        print(browser.find_element(By.ID, 'message').text)
-        print(browser.find_element(By.ID, 'message2').text)
-    finally:
-        browser.quit()
+        print(browser.find_element(By.ID, "message").text)
+        print(browser.find_element(By.ID, "message2").text)
 
 
 explicit_waits(URL)

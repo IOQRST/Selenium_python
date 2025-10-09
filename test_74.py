@@ -7,16 +7,11 @@ URL = "https://parsinger.ru/selenium/9/9.2.1/index.html"
 
 
 def access_scan(url):
-    browser = webdriver.Firefox()
-
-    try:
+    with webdriver.Firefox() as browser:
         browser.get(url)
         browser.find_element(By.ID, "startScan").click()
         WDW(browser, 20).until(EC.title_is("Access Granted"))
         print(browser.find_element(By.ID, "password").text)
-
-    finally:
-        browser.quit()
 
 
 access_scan(URL)
